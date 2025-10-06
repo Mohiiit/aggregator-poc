@@ -145,7 +145,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let layout: LayoutName = LayoutName::all_cairo;
     
     // Directory containing CairoPIE zip files
-    let cairo_pie_dir = Path::new("/Users/mohit/Desktop/karnot/aggregator-poc/cairo_pies");
+    let cairo_pie_dir = Path::new("./cairo_pies");
     let aggregator_type = "snos"; // or "dummy"
     
     // Process all CairoPIE files and build aggregator input
@@ -173,7 +173,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         full_output: false,
         debug_mode: true,
         chain_id: Felt::from_hex_unchecked("0x534e5f5345504f4c4941"),
-        da: DataAvailability::Blob(PathBuf::from("./test.txt")),
+        da: DataAvailability::Blob(PathBuf::from("./test.json")),
         public_keys: None,
         fee_token_address: Felt::from_hex_unchecked("0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d"),
     };
