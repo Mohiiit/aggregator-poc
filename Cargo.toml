@@ -6,10 +6,9 @@ members = [
 ]
 
 [workspace.dependencies]
-starknet_os = { git = "https://github.com/karnotxyz/sequencer", rev = "241bf0766f1f68f36e2c0e39e99c2222932dca9a", features = ["testing"] }
+starknet_os = { git = "https://github.com/karnotxyz/sequencer", tag = "v0.14.1-alpha.0", features = ["testing"] }
 cairo-vm = "=2.5.0"
-starknet-types-core = { git = "https://github.com/starknet-io/types-rs", rev = "c4ebda115ee4f28bc7eb7b780ba60a4f9c2050d3" }
+starknet-types-core = { version = "0.2.4", default-features = false, features = [
+  "hash",
+] }
 tokio = { version = "1.37.0", features = ["rt-multi-thread"] }
-
-[patch.crates-io]
-starknet-types-core = { git = "https://github.com/starknet-io/types-rs", rev = "c4ebda115ee4f28bc7eb7b780ba60a4f9c2050d3" }

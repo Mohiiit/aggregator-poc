@@ -145,7 +145,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let layout: LayoutName = LayoutName::all_cairo;
     
     // Directory containing CairoPIE zip files
-    let cairo_pie_dir = Path::new("./cairo_pies");
+    let cairo_pie_dir = Path::new("./cairo_pie_0.14.1");
     let aggregator_type = "snos"; // or "dummy"
     
     // Process all CairoPIE files and build aggregator input
@@ -168,14 +168,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         None
     };
     
+    let public_keys = vec![
+        Felt::from_hex_unchecked("0x0582ef3a536a8dc8e84ce3369c4fc4f3482bb2fdc9f2df8bd75a5ab9a6d4e63e"),
+        Felt::from_hex_unchecked("0x04c070b60017cacde12c0110affb0647d5efc1d507df2712de65811853cd8c46"),
+    ];
+
     let aggregator_input = AggregatorInput {
         bootloader_output,
         full_output: false,
         debug_mode: true,
-        chain_id: Felt::from_hex_unchecked("0x534e5f5345504f4c4941"),
+        chain_id: Felt::from_hex_unchecked("0x505249564154455f534e5f504f54435f5345504f4c4941"),
         da: DataAvailability::Blob(PathBuf::from("./test.json")),
-        public_keys: None,
-        fee_token_address: Felt::from_hex_unchecked("0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d"),
+        public_keys: Some(public_keys),
+        fee_token_address: Felt::from_hex_unchecked("0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7"),
     };
     
     println!("Running aggregator...");
